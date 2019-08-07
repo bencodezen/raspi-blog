@@ -1,0 +1,19 @@
+---
+title: About Me
+type: page
+blog: false
+
+---
+
+# about page
+
+
+Hi my name is Ian Stanley and I am planning on keeping a blog on the Raspberry Pi and other similar systems.
+
+## About Me
+With well over a couple of decades in the IT industry focussing on \*nix Administration of all sorts of flavours from System V, through BSD/FreeBSD, Solaris, AIX and Linux (since it fit on 3 floopy disks and you had to compile everything yourself) I have tinkered a lot over the years at home with Linux and FreeBSD.
+ 
+As I generally avoid Windows and no longer choose to pay the *Apple Tax* I have been migrating my life off Windows and OSX now that I no longer forced to use Windows and Apple no longer cares about it's customers.
+
+I now have my own personal FreeBSD server in my house as my mainstay, another AcePC mini-PC running FreeBSD as a FreeBSD dev box. I also have a number of Raspberry Pi's as semi-disposable machines that I spin up from time to time as a project demands.
+
