@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Writing RASPBIAN to MicroSD card | Musings on the bitstream</title>
+    <meta name="description" content="">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon.png">
+  <link rel="icon" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+    
+    <link rel="preload" href="/assets/css/0.styles.ac5ce1a7.css" as="style"><link rel="preload" href="/assets/js/app.0c797224.js" as="script"><link rel="preload" href="/assets/js/3.82de19fb.js" as="script"><link rel="preload" href="/assets/js/13.f1bb51e5.js" as="script"><link rel="prefetch" href="/assets/js/10.c5532909.js"><link rel="prefetch" href="/assets/js/11.91fac65e.js"><link rel="prefetch" href="/assets/js/12.2d80709e.js"><link rel="prefetch" href="/assets/js/14.c7f64f18.js"><link rel="prefetch" href="/assets/js/15.45bb5435.js"><link rel="prefetch" href="/assets/js/16.3181a0a3.js"><link rel="prefetch" href="/assets/js/17.f604c62d.js"><link rel="prefetch" href="/assets/js/18.c06bf617.js"><link rel="prefetch" href="/assets/js/19.3d025345.js"><link rel="prefetch" href="/assets/js/20.2d440b7e.js"><link rel="prefetch" href="/assets/js/4.702bfef2.js"><link rel="prefetch" href="/assets/js/5.fadda698.js"><link rel="prefetch" href="/assets/js/6.bdd3cbb9.js"><link rel="prefetch" href="/assets/js/7.8ad5dc64.js"><link rel="prefetch" href="/assets/js/8.d98f0d02.js"><link rel="prefetch" href="/assets/js/9.b30171f7.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.9584e50e.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.ac5ce1a7.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/vuepress-blog-logo.png" alt="Musings on the bitstream" class="logo"> <span class="site-name can-hide">Musings on the bitstream</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">Home</a></div><div class="nav-item"><a href="/blog/" class="nav-link router-link-active">Blog</a></div><div class="nav-item"><a href="/archive/" class="nav-link">Archive</a></div><div class="nav-item"><a href="/about/" class="nav-link">About</a></div><div class="nav-item"><a href="/rss.xml" class="nav-link">
+  RSS Feed
+</a></div> <a href="https://wwww.github.com" target="_blank" rel="noopener noreferrer" class="repo-link">
+    Repo
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">Home</a></div><div class="nav-item"><a href="/blog/" class="nav-link router-link-active">Blog</a></div><div class="nav-item"><a href="/archive/" class="nav-link">Archive</a></div><div class="nav-item"><a href="/about/" class="nav-link">About</a></div><div class="nav-item"><a href="/rss.xml" class="nav-link">
+  RSS Feed
+</a></div> <a href="https://wwww.github.com" target="_blank" rel="noopener noreferrer" class="repo-link">
+    Repo
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <!----> </div> <div class="blog" data-v-1a5b78d0><div class="blog__header" data-v-1a5b78d0><p class="publish-date" data-v-1a5b78d0><time datetime="2019-08-07 12:00" data-v-1a5b78d0>August 7, 2019</time></p> <p data-v-1a5b78d0>Time to read: 1 min read</p> <h1 class="blog__title" data-v-1a5b78d0>Writing RASPBIAN to MicroSD card</h1></div> <div class="custom content__default" data-v-1a5b78d0><h2 id="preparing-the-microsd-card"><a href="#preparing-the-microsd-card" aria-hidden="true" class="header-anchor">#</a> Preparing the MicroSD card</h2> <p>If the MicroSD card needs formatting you can follow <a href="/blog/2019-08-07_format_microsd_on_raspberry_pi.html">this guide</a>.</p> <h2 id="determine-which-device-is-your-microsd-card"><a href="#determine-which-device-is-your-microsd-card" aria-hidden="true" class="header-anchor">#</a> Determine which device is your MicroSD card</h2> <p>To determine which device to use (e.g. /dev/sda) see <a href="/blog/2019-08-07_format_microsd_on_raspberry_pi.html#working-out-which-drive-is-your-microsd-card">this guide</a></p> <h2 id="writing-the-operating-system-to-the-microsd"><a href="#writing-the-operating-system-to-the-microsd" aria-hidden="true" class="header-anchor">#</a> Writing the operating system to the MicroSD</h2> <p>To write the Raspbian operating system to a MicroSD card for another Pi (or an alternative configuration of the same Pi) is quick and easy:</p> <div class="language- extra-class"><pre class="language-text"><code>$ sudo dd bs=1M if=./2019-07-10-raspbian-buster.img of=/dev/sda status=progress conv=fsync
+</code></pre></div><p>The Linux will respond with a progress report of the writing of the Raspbian image to the card:</p> <div class="language- extra-class"><pre class="language-text"><code>31+0 records in
+30+0 records out
+31457280 bytes (31 MB, 30 MiB) copied, 0.761732 s, 41.3 MB/s
+44040192 bytes (44 MB, 42 MiB) copied, 1 s, 43.1 MB/s
+76+0 records in
+75+0 records out
+78643200 bytes (79 MB, 75 MiB) copied, 1.80717 s, 43.5 MB/s
+89128960 bytes (89 MB, 85 MiB) copied, 2 s, 44.2 MB/s
+121+0 records in
+120+0 records out
+
+...
+
+3604+0 records in
+3604+0 records out
+3779067904 bytes (3.8 GB, 3.5 GiB) copied, 160.254 s, 23.6 MB/s
+3604+0 records in
+3604+0 records out
+3779067904 bytes (3.8 GB, 3.5 GiB) copied, 160.254 s, 23.6 MB/s
+pi@ian:~/Documents/Raspbian $ 
+</code></pre></div></div> <div class="page-edit" data-v-1a5b78d0><div class="edit-link" data-v-1a5b78d0><a href="https://wwww.github.com/edit/master/src/blog/2019-08-08_write_raspbian_to_microsd.md" target="_blank" rel="noopener noreferrer" data-v-1a5b78d0>Found a bug? Help me improve this page!</a> <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" data-v-1a5b78d0 data-v-1a5b78d0><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></div> <!----></div> <!----> </div> <!----></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.0c797224.js" defer></script><script src="/assets/js/3.82de19fb.js" defer></script><script src="/assets/js/13.f1bb51e5.js" defer></script>
+  </body>
+</html>
